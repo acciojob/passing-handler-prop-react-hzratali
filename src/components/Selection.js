@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Selection.css";
 
 const Selection = (props) => {
-  function helper(e) {
-    console.log(e.target);
-    e.target.style.backgroundColor = applyColor.background;
-  }
-
-  const { applyColor } = props;
-  console.log("Selection applyColor background is == ", applyColor.background);
+  const [selectionStyle, updateSelectionStyle] = useState({});
   return (
     <div
       className="fix-box"
-      onClick={(e) => {
-        helper(e);
+      style={selectionStyle}
+      onClick={() => {
+        props.applyColor(updateSelectionStyle);
       }}
     >
-      <h2>Selection</h2>
+      <h2 className="subheading">Selection</h2>
     </div>
   );
 };
